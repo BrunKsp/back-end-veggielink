@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\infra\VeggieLink.Infra.csproj" />
+    <ProjectReference Include="..\aplication\VeggieLink.Aplication.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
