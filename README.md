@@ -21,6 +21,22 @@ VeggieLink é um aplicativo de monitoramento e rastreamento que visa facilitar o
 - .Net para o backend
 - Postgrees para o banco de dados
 
+# Startar Projeto
+
+rodar comando
+```ssh
+docker compose up -d
+```
+
+acesse o banco e rode os seguintes comandos para criar schemas
+```ssh
+CREATE SCHEMA veggielink;
+```
+e rode as migrations conforme [seção](#rodar-migrations)
+
+## Acesso aos bancos
+As informações de acesso aos bancos devem estar no arquivo .env, para criá-lo basta rodar o comando na pasta src/api
+
 ## Autor
 Este projeto foi desenvolvido por [Bruno Siqueira](https://github.com/BrunKsp).
 
