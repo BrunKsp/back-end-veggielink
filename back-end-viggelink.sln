@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VeggieLink.Data", "src\data
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VeggieLink.Infra", "src\infra\VeggieLink.Infra.csproj", "{3D8A8D9C-51FD-4870-9F80-73D4995D181B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VeggieLink.CrossCutting.IoC", "src\CrossCutting.IoC\VeggieLink.CrossCutting.IoC.csproj", "{AA31DC94-3851-4756-BC95-0243799DBAB4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
