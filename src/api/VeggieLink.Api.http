@@ -1,6 +1,0 @@
-@VeggieLink.Api_HostAddress = http://localhost:5102
-
-GET {{VeggieLink.Api_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

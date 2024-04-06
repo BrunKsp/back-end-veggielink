@@ -1,13 +1,12 @@
 version: '3.1'
 
 services:
-  postgres:
-    container_name: veggie-link
-    image: postgres
+  mongo:
+    image: mongo
+    container_name: mongodb
     restart: always
-    ports:
-      - "5432:5432"
     environment:
-      POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "postgres"
-      POSTGRES_DB: "apps"
+      MONGO_INITDB_ROOT_USERNAME: mongodb
+      MONGO_INITDB_ROOT_PASSWORD: mongodb
+    ports:
+      - "27017:27017"
