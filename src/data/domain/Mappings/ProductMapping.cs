@@ -12,18 +12,17 @@ public class ProductMapping : DocumentMapping<ProductCollection>
           .SetIdGenerator(StringObjectIdGenerator.Instance);
 
     cm.MapField(x => x.Status)
-      .SetElementName("status");
+      .SetElementName("status")
+      .SetDefaultValue(1);
 
     cm.MapField(x => x.Name)
-      .SetElementName("name")
-      .SetIsRequired(true); ;
+      .SetElementName("name");
 
     cm.MapField(x => x.Description)
       .SetElementName("description");
 
     cm.MapProperty(x => x.PlantingDate)
-        .SetElementName("planting_date")
-        .SetIsRequired(true);
+        .SetElementName("planting_date");
 
     cm.MapField(x => x.HarverstDate)
       .SetElementName("harvest_date");

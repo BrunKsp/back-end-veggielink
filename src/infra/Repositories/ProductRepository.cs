@@ -18,15 +18,32 @@ public class ProductRepository : IProductRepository
     {
         await _dataBase.InsertOneAsync(collection);
     }
+    public async Task<List<ProductCollection>> GetAllProducts()
+    {
+        return await _dataBase.Find(_ => true).ToListAsync();
+    }
     public async Task<ProductCollection> GetProduct(string id)
     {
-        var filtro = Builders<ProductCollection>.Filter.Eq(x => x.Id, id);
-        return await _dataBase.Find(t => t.Id.ToLower() == id.ToLower()).FirstOrDefaultAsync();
+        var filter = Builders<ProductCollection>.Filter.Eq(p => p.Id, id);
+        return await _dataBase.Find(filter).FirstOrDefaultAsync();
     }
     public async Task UpdateStatus(string id)
     {
-        var filter = Builders<ProductCollection>.Filter.Eq(t => t.Id, id);
-        var update = Builders<ProductCollection>.Update.Set(t => t.Status, 0);
+        var filter = Builders<ProductCollection>.Filter.Eq(p => p.Id, id);
+        var update = Builders<ProductCollection>.Update.Set(p => p.Status, 0);
+
+        await _dataBase.UpdateOneAsync(filter, update);
+    }
+    public async Task UpdateProduct(ProductCollection dto, string id)
+    {
+        var filter = Builders<ProductCollection>.Filter.Eq(p => p.Id, id);
+
+        var update = Builders<ProductCollection>.Update
+            .Set(p => p.Name, dto.Name)
+            .Set(p => p.Description, dto.Description)
+            .Set(p => p.PlantingDate, dto.PlantingDate)
+            .Set(p => p.HarverstDate, dto.HarverstDate)
+            .Set(p => p.Status, dto.Status);
 
         await _dataBase.UpdateOneAsync(filter, update);
     }

@@ -1,8 +1,10 @@
 using aplication.Dtos.Products;
-using aplication.Validators.ProductValidator;
+using aplication.Exceptions;
 using AutoMapper;
 using data.domain.Collections;
 using infra.Interfaces;
+using VeggieLink.Aplication.Dtos.Products;
+using VeggieLink.Aplication.Validators.ProductValidator;
 
 namespace aplication.Services;
 
@@ -16,12 +18,39 @@ public class ProductService : BaseService, IProductService
         _repository = repository;
         _mapper = mapper;
     }
-    public Task Create(CreateProductDto dto)
+    public async Task Create(CreateProductDto dto)
     {
         Validate(new CreateProductValidator(), dto);
 
         var product = _mapper.Map<ProductCollection>(dto);
 
-        return _repository.Create(product);
+        await _repository.Create(product);
+    }
+    public async Task<List<ListProductDto>> GetAllProducts()
+    {
+        var product = await _repository.GetAllProducts();
+
+        return _mapper.Map<List<ListProductDto>>(product);
+    }
+    public async Task<ListProductDto> GetProduct(string id)
+    {
+        var product = await _repository.GetProduct(id) ?? throw CustomException.EntityNotFound(new { error = "Produto não encontrado" });
+
+        return _mapper.Map<ListProductDto>(product);
+    }
+    public async Task ChangeProduct(ChangeProductDto dto, string id)
+    {
+        Validate(new ChangeProductValidator(), dto);
+        var product = await _repository.GetProduct(id) ?? throw CustomException.EntityNotFound(new { error = "Produto não encontrado" });
+
+        var newproduct = new ProductCollection
+        {
+            Name = dto.Name,
+            Description = dto.Description,
+            PlantingDate = dto.PlantingDate,
+            HarverstDate = dto.HarverstDate,
+            Status = dto.Status
+        };
+        await _repository.UpdateProduct(newproduct, id);
     }
 }
