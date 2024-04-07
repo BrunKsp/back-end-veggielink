@@ -11,6 +11,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.3">
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="SubtitlesParser" Version="1.5.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="WebApiThrottle" Version="1.5.4" />
     <PackageReference Include="FluentValidation" Version="11.9.0" />
