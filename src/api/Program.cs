@@ -32,6 +32,7 @@ builder.Services.AddCors(options =>
         policy.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
     });
 });
+builder.Services.AuthServiceConfig(builder.Configuration);
 
 var app = builder.Build();
 
@@ -41,6 +42,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.AuthAppConfig();
 
 app.UseHttpsRedirection();
 

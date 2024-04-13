@@ -1,6 +1,6 @@
 using data.domain.Collections;
 
-namespace infra.Interfaces;
+namespace VeggieLink.Infra.Interfaces;
 
 public interface IProductRepository
 {

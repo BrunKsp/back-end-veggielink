@@ -1,5 +1,6 @@
 using aplication.Dtos.Products;
 using aplication.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VeggieLink.Aplication.Dtos.Products;
 
@@ -14,6 +15,7 @@ namespace api.Controllers
         {
             _service = service;
         }
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateProduct([FromBody] CreateProductDto dto)
         {
@@ -31,6 +33,7 @@ namespace api.Controllers
         {
             return await _service.GetProduct(id);
         }
+        [Authorize]
         [HttpPut]
         public async Task<IActionResult> ChangeProduct([FromBody] ChangeProductDto dto, [FromQuery] string id)
         {

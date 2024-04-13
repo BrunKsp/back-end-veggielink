@@ -2,9 +2,9 @@ using aplication.Dtos.Products;
 using aplication.Exceptions;
 using AutoMapper;
 using data.domain.Collections;
-using infra.Interfaces;
 using VeggieLink.Aplication.Dtos.Products;
 using VeggieLink.Aplication.Validators.ProductValidator;
+using VeggieLink.Infra.Interfaces;
 
 namespace aplication.Services;
 
