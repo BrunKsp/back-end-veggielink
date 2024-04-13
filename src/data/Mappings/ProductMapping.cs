@@ -8,23 +8,23 @@ public class ProductMapping : DocumentMapping<ProductCollection>
 {
   public override void Map(BsonClassMap<ProductCollection> cm)
   {
-    cm.MapIdField(x => x.Id)
+    cm.MapIdField(p => p.Id)
           .SetIdGenerator(StringObjectIdGenerator.Instance);
 
-    cm.MapField(x => x.Status)
+    cm.MapField(p => p.Status)
       .SetElementName("status")
       .SetDefaultValue(1);
 
-    cm.MapField(x => x.Name)
+    cm.MapField(p => p.Name)
       .SetElementName("name");
 
-    cm.MapField(x => x.Description)
+    cm.MapField(p => p.Description)
       .SetElementName("description");
 
-    cm.MapProperty(x => x.PlantingDate)
+    cm.MapProperty(p => p.PlantingDate)
         .SetElementName("planting_date");
 
-    cm.MapField(x => x.HarverstDate)
+    cm.MapField(p => p.HarverstDate)
       .SetElementName("harvest_date");
   }
 }

@@ -1,9 +1,9 @@
 using data.domain.Collections;
 using data.domain.Context;
-using infra.Interfaces;
 using MongoDB.Driver;
+using VeggieLink.Infra.Interfaces;
 
-namespace infra.Repositories;
+namespace VeggieLink.Infra.Repositories;
 
 public class ProductRepository : IProductRepository
 {
