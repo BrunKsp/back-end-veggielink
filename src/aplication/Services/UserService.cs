@@ -27,7 +27,7 @@ public class UserService : BaseService, IUserService
         Validate(new CreateUserValidator(), dto);
 
         dto.Email = dto.Email.Trim();
-        var email = _repository.FindByEmail(dto.Email);
+        var email = await  _repository.FindByEmail(dto.Email);
 
         if (email != null)
         {
