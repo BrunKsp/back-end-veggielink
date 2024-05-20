@@ -24,7 +24,7 @@ namespace VeggieLink.Api.Controllers
             return Ok("Criado Com Sucesso");
         }
         [HttpGet("all")]
-        public async Task<List<ListProductDto>> GetAllProducts()
+        public async Task<List<ProductDto>> GetAllProducts()
         {
             return await _service.GetAllProducts();
 

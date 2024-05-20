@@ -20,18 +20,25 @@ public static class NativeCoreDependencyInjection
         #region Repositorys
         services.AddScoped<IProductRepository, ProductRepository>();
         services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<ICategoryRepository, CategoryRepository>();
         #endregion
 
         #region Services
         services.AddScoped<IProductService, ProductService>();
         services.AddScoped<IUserService, UserService>();
         services.AddScoped<IAuthService, AuthService>();
+        services.AddScoped<ICategoryService, CategoryService>();
         #endregion
 
         services.AddScoped(x =>
       {
           var context = x.GetRequiredService<DbContext>();
           return context.ProductCollection;
+      });
+       services.AddScoped(x =>
+      {
+          var context = x.GetRequiredService<DbContext>();
+          return context.CategoryCollection;
       });
     }
 }

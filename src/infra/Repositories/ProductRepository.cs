@@ -1,6 +1,10 @@
 using data.domain.Collections;
 using data.domain.Context;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using VeggieLink.Data.Collections;
+using VeggieLink.Infra.domain.Dtos;
 using VeggieLink.Infra.Interfaces;
 
 namespace VeggieLink.Infra.Repositories;
@@ -8,10 +12,12 @@ namespace VeggieLink.Infra.Repositories;
 public class ProductRepository : IProductRepository
 {
     protected IMongoCollection<ProductCollection> _dataBase;
+    protected IMongoCollection<CategoryCollection> _category;
 
-    public ProductRepository(DbContext context)
+    public ProductRepository(DbContext context, IMongoCollection<CategoryCollection> category)
     {
         _dataBase = context.ProductCollection;
+        _category = category;
     }
 
     public async Task Create(ProductCollection collection)
@@ -47,4 +53,35 @@ public class ProductRepository : IProductRepository
 
         await _dataBase.UpdateOneAsync(filter, update);
     }
+    public async Task<List<ProductWithCategory>> GetProductsWithCategoriesAsync()
+    {
+        var bsonProducts = await _dataBase.Aggregate()
+            .Lookup<ProductCollection, CategoryCollection, ProductWithCategory>(
+                _category,
+                product => product.CategoryId,
+                category => category.Id,
+                product => product.CategoryDetails
+            )
+            .Unwind("CategoryDetails")
+            .Project<BsonDocument>(
+                Builders<BsonDocument>.Projection
+
+                    .Include("Status")
+                    .Include("Name")
+                    .Include("Description")
+                    .Include("Thumb")
+                    .Include("PlantingDate")
+                    .Include("HarvestDate")
+                    .Include("CategoryId")
+                    .Include("CategoryDetails.Name")
+
+            )
+            .ToListAsync();
+        var productsWithCategories = bsonProducts.Select(bsonProduct =>
+        {
+            return BsonSerializer.Deserialize<ProductWithCategory>(bsonProduct);
+        }).ToList();
+        return productsWithCategories;
+    }
+
 }

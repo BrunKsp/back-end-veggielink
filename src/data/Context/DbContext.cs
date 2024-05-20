@@ -22,5 +22,7 @@ public class DbContext
             _database.GetCollection<ProductCollection>("product");
     public IMongoCollection<UserCollection> UserCollection =>
             _database.GetCollection<UserCollection>("user");
+    public IMongoCollection<CategoryCollection> CategoryCollection =>
+            _database.GetCollection<CategoryCollection>("category");
 
 }

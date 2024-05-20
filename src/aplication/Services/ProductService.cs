@@ -26,11 +26,11 @@ public class ProductService : BaseService, IProductService
 
         await _repository.Create(product);
     }
-    public async Task<List<ListProductDto>> GetAllProducts()
+    public async Task<List<ProductDto>> GetAllProducts()
     {
-        var product = await _repository.GetAllProducts();
+        var product = await _repository.GetProductsWithCategoriesAsync();
 
-        return _mapper.Map<List<ListProductDto>>(product);
+        return _mapper.Map<List<ProductDto>>(product);
     }
     public async Task<ListProductDto> GetProduct(string id)
     {
