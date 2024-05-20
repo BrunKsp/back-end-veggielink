@@ -26,5 +26,8 @@ public class ProductMapping : DocumentMapping<ProductCollection>
 
     cm.MapField(p => p.HarverstDate)
       .SetElementName("harvest_date");
+    
+    cm.MapProperty(p => p.Thumb)
+        .SetElementName("thumb");
   }
 }

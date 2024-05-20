@@ -1,10 +1,11 @@
+using api.Controllers;
 using aplication.Dtos.Products;
 using aplication.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VeggieLink.Aplication.Dtos.Products;
 
-namespace api.Controllers
+namespace VeggieLink.Api.Controllers
 {
     [Route("products")]
     public class ProductController : BaseController
@@ -22,7 +23,7 @@ namespace api.Controllers
             await _service.Create(dto);
             return Ok("Criado Com Sucesso");
         }
-        [HttpGet("/all")]
+        [HttpGet("all")]
         public async Task<List<ListProductDto>> GetAllProducts()
         {
             return await _service.GetAllProducts();
@@ -37,7 +38,7 @@ namespace api.Controllers
         [HttpPut]
         public async Task<IActionResult> ChangeProduct([FromBody] ChangeProductDto dto, [FromQuery] string id)
         {
-            await _service.ChangeProduct(dto,id);
+            await _service.ChangeProduct(dto, id);
             return Ok("Alterado Com Sucesso");
         }
     }
