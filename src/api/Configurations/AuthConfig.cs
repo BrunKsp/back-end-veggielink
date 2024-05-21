@@ -6,17 +6,9 @@ namespace VeggieLink.Api.Configurations
 {
     public static class AuthConfig
     {
-        public static void AuthServiceConfig(this IServiceCollection services, IConfiguration config)
+        public static void AuthServiceConfig(this IServiceCollection services, IConfiguration configuration)
         {
-            var jwtSettings = config["Jwt:Settings"];
-            Console.WriteLine($"Jwt:Settings value: {jwtSettings}");
-            if (string.IsNullOrEmpty(jwtSettings))
-            {
-                throw new ArgumentNullException(nameof(jwtSettings), "Configuration value for 'Jwt:Settings' is missing.");
-            }
-
-            var key = Encoding.ASCII.GetBytes(jwtSettings);
-
+           var key = Encoding.ASCII.GetBytes(configuration["Jwt:Settings"]);
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -42,5 +34,4 @@ namespace VeggieLink.Api.Configurations
             app.UseAuthorization();
         }
     }
-
 }
