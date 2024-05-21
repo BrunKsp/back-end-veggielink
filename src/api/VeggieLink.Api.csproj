@@ -29,7 +29,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CrossCutting.IoC\VeggieLink.CrossCutting.IoC.csproj" />
     <ProjectReference Include="..\aplication\VeggieLink.Aplication.csproj" />
+    <ProjectReference Include="..\CrossCutting.Ioc\VeggieLink.CrossCutting.Ioc.csproj" />
   </ItemGroup>
 </Project>
