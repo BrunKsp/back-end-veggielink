@@ -5,7 +5,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["src/api/ABO.VeggieLink.Api.csproj", "src/api/"]
+COPY ["src/api/VeggieLink.Api.csproj", "src/api/"]
 RUN dotnet restore "src/api/VeggieLink.Api.csproj" -p:HUSKY=0
 COPY . .
 WORKDIR "/src/src/api"
