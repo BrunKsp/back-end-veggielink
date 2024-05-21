@@ -9,7 +9,7 @@ namespace VeggieLink.Api.Configurations
         public static void AuthServiceConfig(this IServiceCollection services, IConfiguration config)
         {
             var jwtSettings = config["Jwt:Settings"];
-
+            Console.WriteLine($"Jwt:Settings value: {jwtSettings}");
             if (string.IsNullOrEmpty(jwtSettings))
             {
                 throw new ArgumentNullException(nameof(jwtSettings), "Configuration value for 'Jwt:Settings' is missing.");
