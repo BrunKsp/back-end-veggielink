@@ -27,7 +27,7 @@ namespace VeggieLink.Api.Controllers
         {
             return await _service.CreateUser(dto);
         }
-        [HttpPost("/login")]
+        [HttpPost("login")]
         public async Task<AuthDto> Login([FromBody] LoginDto dto)
         {
             return await _authService.Login(dto);

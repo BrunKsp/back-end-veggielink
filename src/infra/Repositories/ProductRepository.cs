@@ -1,6 +1,10 @@
 using data.domain.Collections;
 using data.domain.Context;
+using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
+using VeggieLink.Data.Collections;
+using VeggieLink.Infra.domain.Dtos;
 using VeggieLink.Infra.Interfaces;
 
 namespace VeggieLink.Infra.Repositories;
@@ -8,10 +12,12 @@ namespace VeggieLink.Infra.Repositories;
 public class ProductRepository : IProductRepository
 {
     protected IMongoCollection<ProductCollection> _dataBase;
+    protected IMongoCollection<CategoryCollection> _category;
 
-    public ProductRepository(DbContext context)
+    public ProductRepository(DbContext context, IMongoCollection<CategoryCollection> category)
     {
         _dataBase = context.ProductCollection;
+        _category = category;
     }
 
     public async Task Create(ProductCollection collection)

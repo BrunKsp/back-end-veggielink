@@ -1,6 +1,7 @@
 using data.domain.Collections;
 using MongoDB.Bson.Serialization;
 using MongoDB.Bson.Serialization.IdGenerators;
+using MongoDB.Bson.Serialization.Serializers;
 
 namespace data.domain.Mappings;
 
@@ -26,5 +27,11 @@ public class ProductMapping : DocumentMapping<ProductCollection>
 
     cm.MapField(p => p.HarverstDate)
       .SetElementName("harvest_date");
+
+    cm.MapProperty(p => p.Thumb)
+        .SetElementName("thumb");
+
+    cm.MapField(p => p.CategoryId)
+            .SetElementName("category_id");
   }
 }

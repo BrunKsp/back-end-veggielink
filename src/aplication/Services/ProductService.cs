@@ -11,12 +11,14 @@ namespace aplication.Services;
 public class ProductService : BaseService, IProductService
 {
     private readonly IProductRepository _repository;
+    private readonly ICategoryRepository _categoryRepository;
     private readonly IMapper _mapper;
 
-    public ProductService(IProductRepository repository, IMapper mapper)
+    public ProductService(IProductRepository repository, IMapper mapper, ICategoryRepository categoryRepository)
     {
         _repository = repository;
         _mapper = mapper;
+        _categoryRepository = categoryRepository;
     }
     public async Task Create(CreateProductDto dto)
     {
@@ -26,12 +28,37 @@ public class ProductService : BaseService, IProductService
 
         await _repository.Create(product);
     }
-    public async Task<List<ListProductDto>> GetAllProducts()
+    public async Task<Dictionary<string, List<ProductDto>>> GetAllProducts()
     {
-        var product = await _repository.GetAllProducts();
+        var products = await _repository.GetAllProducts();
+        var categoryIds = products.Select(p => p.CategoryId).Distinct().ToList();
+        var categoryNames = await _categoryRepository.GetCategoriesById(categoryIds);
+        var categoryDictionary = categoryNames.ToDictionary(c => c.Id, c => c.Name);
 
-        return _mapper.Map<List<ListProductDto>>(product);
+        var groupedProducts = new Dictionary<string, List<ProductDto>>();
+
+        foreach (var product in products)
+        {
+            var categoryName = categoryDictionary.ContainsKey(product.CategoryId) ? categoryDictionary[product.CategoryId] : "Categoria Desconhecida";
+
+            if (!groupedProducts.ContainsKey(categoryName))
+            {
+                groupedProducts[categoryName] = new List<ProductDto>();
+            }
+
+            groupedProducts[categoryName].Add(new ProductDto
+            {
+                Id = product.Id,
+                Name = product.Name,
+                Thumb = product.Thumb,
+                CategoryId = product.CategoryId,
+                CategoryName = categoryName
+            });
+        }
+
+        return groupedProducts;
     }
+
     public async Task<ListProductDto> GetProduct(string id)
     {
         var product = await _repository.GetProduct(id) ?? throw CustomException.EntityNotFound(new { error = "Produto não encontrado" });

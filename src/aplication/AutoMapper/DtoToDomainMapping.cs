@@ -1,6 +1,7 @@
 using aplication.Dtos.Products;
 using AutoMapper;
 using data.domain.Collections;
+using VeggieLink.Aplication.Dtos.Category;
 using VeggieLink.Aplication.Dtos.User;
 using VeggieLink.Data.Collections;
 
@@ -12,5 +13,6 @@ public class DtoToDomainMapping : Profile
     {
         CreateMap<CreateProductDto, ProductCollection>();
         CreateMap<CreateUserDto, UserCollection>();
+        CreateMap<CreateCategoryDto, CategoryCollection>();
     }
 }
