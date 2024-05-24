@@ -53,35 +53,4 @@ public class ProductRepository : IProductRepository
 
         await _dataBase.UpdateOneAsync(filter, update);
     }
-    public async Task<List<ProductWithCategory>> GetProductsWithCategoriesAsync()
-    {
-        var bsonProducts = await _dataBase.Aggregate()
-            .Lookup<ProductCollection, CategoryCollection, ProductWithCategory>(
-                _category,
-                product => product.CategoryId,
-                category => category.Id,
-                product => product.CategoryDetails
-            )
-            .Unwind("CategoryDetails")
-            .Project<BsonDocument>(
-                Builders<BsonDocument>.Projection
-
-                    .Include("Status")
-                    .Include("Name")
-                    .Include("Description")
-                    .Include("Thumb")
-                    .Include("PlantingDate")
-                    .Include("HarvestDate")
-                    .Include("CategoryId")
-                    .Include("CategoryDetails.Name")
-
-            )
-            .ToListAsync();
-        var productsWithCategories = bsonProducts.Select(bsonProduct =>
-        {
-            return BsonSerializer.Deserialize<ProductWithCategory>(bsonProduct);
-        }).ToList();
-        return productsWithCategories;
-    }
-
 }

@@ -6,5 +6,5 @@ public class CreateProductDto
     public string Description { get; set; }
     public DateTime PlantingDate { get; set; }
     public string Thumb { get; set; }
-    public string Category { get; set; }
+    public string CategoryId { get; set; }
 }

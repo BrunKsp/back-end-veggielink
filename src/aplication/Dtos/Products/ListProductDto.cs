@@ -8,5 +8,5 @@ public class ListProductDto
     public DateTime PlantingDate { get; set; }
     public DateTime HarverstDate { get; set; }
     public int Status { get; set; }
-    public string Category { get; set; }
+    public string CategoryId { get; set; }
 }

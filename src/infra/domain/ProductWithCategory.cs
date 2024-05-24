@@ -13,6 +13,6 @@ public class ProductWithCategory : ProductCollection
     public DateTime PlantingDate { get; set; }
     public DateTime HarvestDate { get; set; }
     public string CategoryId { get; set; }
-     public string CategoryName => CategoryDetails?.Name;
+     public string CategoryName {get;set;}
      public CategoryCollection CategoryDetails { get; set; }
 }

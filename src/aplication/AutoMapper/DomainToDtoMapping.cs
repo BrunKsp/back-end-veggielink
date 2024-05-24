@@ -11,5 +11,6 @@ public class DomainToDtoMapping : Profile
     public DomainToDtoMapping(IConfiguration config)
     {
         CreateMap<ProductCollection, ProductDto>();
+        CreateMap<ProductCollection, ListProductDto>();
     }
 }
