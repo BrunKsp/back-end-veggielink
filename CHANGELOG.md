@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="1.0.1"></a>
+## [1.0.1](https://www.github.com/BrunKsp/back-end-veggielink/releases/tag/v1.0.1) (2024-06-04)
+
+### Other
+
+* Update develop-version.yml ([a2dc346](https://www.github.com/BrunKsp/back-end-veggielink/commit/a2dc346b5e62694eb84e45d38992efc89f11ffae))
+
 <a name="1.0.0"></a>
 ## [1.0.0](https://www.github.com/BrunKsp/back-end-veggielink/releases/tag/v1.0.0) (2024-06-04)
 
