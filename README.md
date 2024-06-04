@@ -19,7 +19,7 @@ VeggieLink é um aplicativo de monitoramento e rastreamento que visa facilitar o
 ## Tecnologias Utilizadas
 - React.js para o frontend
 - .Net para o backend
-- Postgrees para o banco de dados
+- MongoDB para o banco de dados
 
 # Startar Projeto
 
