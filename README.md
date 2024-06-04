@@ -1,7 +1,7 @@
 # VeggieLink
 
 ## Descrição do Projeto
-VeggieLink é um aplicativo de monitoramento e rastreamento que visa facilitar o cultivo de hortaliças, desde o plantio até o consumidor final. Ele oferece uma plataforma abrangente que permite aos usuários monitorar o crescimento de suas plantas, receber orientações personalizadas, interagir com outros cultivadores na comunidade e até mesmo vender seus produtos diretamente aos consumidores locais.
+VeggieLink é um aplicativo/web de monitoramento e rastreamento que visa facilitar o cultivo de hortaliças, desde o plantio até o consumidor final. Ele oferece uma plataforma abrangente que permite aos usuários monitorar o crescimento de suas plantas, receber orientações personalizadas, interagir com outros cultivadores na comunidade e até mesmo vender seus produtos diretamente aos consumidores locais.
 
 ## Principais Recursos
 - **Monitoramento do Crescimento:** Registre e acompanhe o progresso do crescimento de suas hortaliças, incluindo datas de plantio, irrigação, fertilização e condições climáticas.
