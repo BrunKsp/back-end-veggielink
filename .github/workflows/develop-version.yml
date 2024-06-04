@@ -2,7 +2,7 @@ name: Versionar e gerar release
 
 on:
   push:
-    branches: ["main"]
+    branches: ["develop"]
 
 jobs:
   build:
@@ -13,7 +13,6 @@ jobs:
       with:
         fetch-depth: 0
         token: ${{ secrets.MINHA_CHAVE }}
-        submodules: recursive
         
     - name: Configurar .NET
       uses: actions/setup-dotnet@v3
