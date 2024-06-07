@@ -24,6 +24,10 @@ public class CategoryService : ICategoryService
 
         await _repository.Create(category);
     }
+    public async Task<IList<CategoryCollection>> GetAllCategorys()
+    {
+       return await _repository.GetAllCategorys();
+    }
     public async Task<CategoryCollection> GetCategory(string id)
     {
        return await _repository.GetCategory(id) ?? throw CustomException.EntityNotFound(new { error = "Categoria não encontrada" });
