@@ -29,4 +29,10 @@ public class CategoryController : BaseController
     {
         return await _service.GetCategory(id);
     }
+
+    [HttpGet("all")]
+    public async Task<IList<CategoryCollection>> GetAllCategorys()
+    {
+        return await _service.GetAllCategorys();
+    }
 }
