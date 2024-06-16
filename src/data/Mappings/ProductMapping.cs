@@ -28,6 +28,15 @@ public class ProductMapping : DocumentMapping<ProductCollection>
     cm.MapField(p => p.HarverstDate)
       .SetElementName("harvest_date");
 
+    cm.MapProperty(p => p.PreparingDate)
+      .SetElementName("preparing_date");
+
+    cm.MapField(p => p.Observation)
+      .SetElementName("observation");
+
+    cm.MapField(p => p.Fertilizer)
+     .SetElementName("fertilizer");
+
     cm.MapProperty(p => p.Thumb)
         .SetElementName("thumb");
 
