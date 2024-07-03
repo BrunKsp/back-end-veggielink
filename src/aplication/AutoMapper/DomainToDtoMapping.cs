@@ -2,9 +2,11 @@ using aplication.Dtos.Products;
 using AutoMapper;
 using data.domain.Collections;
 using Microsoft.Extensions.Configuration;
+using VeggieLink.Aplication.Dtos.Category;
 using VeggieLink.Aplication.Dtos.Products;
+using VeggieLink.Data.Collections;
 
-namespace aplication.AutoMapper;
+namespace VeggieLink.Aplication.AutoMapper;
 
 public class DomainToDtoMapping : Profile
 {
@@ -12,5 +14,6 @@ public class DomainToDtoMapping : Profile
     {
         CreateMap<ProductCollection, ProductDto>();
         CreateMap<ProductCollection, ListProductDto>();
+        CreateMap<CategoryCollection, CategoryDto>();
     }
 }
