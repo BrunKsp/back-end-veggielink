@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="1.2.0"></a>
+## [1.2.0](https://www.github.com/BrunKsp/back-end-veggielink/releases/tag/v1.2.0) (2024-07-03)
+
+### Features
+
+* added categorys search for id ([8943638](https://www.github.com/BrunKsp/back-end-veggielink/commit/8943638dc3edf4a06ecd8eeda1758fb1b7c38742))
+
+### Other
+
+* Merge pull request #15 from BrunKsp/feat/categorys ([efab736](https://www.github.com/BrunKsp/back-end-veggielink/commit/efab73650670e703918d56de3d601a341d338465))
+
 <a name="1.1.0"></a>
 ## [1.1.0](https://www.github.com/BrunKsp/back-end-veggielink/releases/tag/v1.1.0) (2024-06-16)
 
