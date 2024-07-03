@@ -53,4 +53,9 @@ public class ProductRepository : IProductRepository
 
         await _dataBase.UpdateOneAsync(filter, update);
     }
+    public async Task<IList<ProductCollection>> GetProductCategory(string categoryId)
+    {
+        var filter = Builders<ProductCollection>.Filter.Eq(p => p.CategoryId, categoryId);
+        return await _dataBase.Find(filter).ToListAsync();
+    }
 }
