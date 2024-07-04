@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [versionize](https://github.com/versionize/versionize) for commit guidelines.
 
+<a name="1.2.1"></a>
+## [1.2.1](https://www.github.com/BrunKsp/back-end-veggielink/releases/tag/v1.2.1) (2024-07-04)
+
+### Other
+
+* fix ([87664c5](https://www.github.com/BrunKsp/back-end-veggielink/commit/87664c57a04effa0dd792428e90e423dfae83627))
+
 <a name="1.2.0"></a>
 ## [1.2.0](https://www.github.com/BrunKsp/back-end-veggielink/releases/tag/v1.2.0) (2024-07-03)
 
