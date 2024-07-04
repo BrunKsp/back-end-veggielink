@@ -75,8 +75,13 @@ public class ProductService : BaseService, IProductService
             Name = dto.Name,
             Description = dto.Description,
             PlantingDate = dto.PlantingDate,
+            PreparingDate = dto.PreparingDate,
             HarverstDate = dto.HarverstDate,
-            Status = dto.Status
+            Status = dto.Status,
+            Thumb = dto.Thumb,
+            Fertilizer = dto.Fertilizer,
+            Observation = dto.Observation,
+            CategoryId = dto.CategoryId
         };
         await _repository.UpdateProduct(newproduct, id);
     }
