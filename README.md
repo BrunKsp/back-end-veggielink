@@ -33,4 +33,3 @@ As informações de acesso aos bancos devem estar no arquivo .env na pasta src/a
 
 ## Autor
 Este projeto foi desenvolvido por [Bruno Siqueira](https://github.com/BrunKsp).
-
