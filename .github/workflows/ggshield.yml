@@ -13,4 +13,4 @@ jobs:
         run: pip install ggshield
 
       - name: Scaneando os segredos do PR
-        run: ggshield scan pr
+        run: ggshield secret scan changes
