@@ -12,10 +12,7 @@ jobs:
       - name: Instalando ggshield
         run: pip install ggshield
 
-      - name: Autenticando com GitGuardian
+      - name: Scaneando os segredos do PR
         env:
           GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
-        run: echo "${{ secrets.GITGUARDIAN_API_KEY }}" | ggshield auth login --api-key
-
-      - name: Scaneando os segredos do PR
         run: ggshield secret scan changes
