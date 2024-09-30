@@ -6,11 +6,16 @@ jobs:
   ggshield:
     runs-on: ubuntu-latest
     steps:
-      - name: Checando  codigo
+      - name: Checando código
         uses: actions/checkout@v3
 
       - name: Instalando ggshield
         run: pip install ggshield
+
+      - name: Autenticando com GitGuardian
+        env:
+          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
+        run: echo "${{ secrets.GITGUARDIAN_API_KEY }}" | ggshield auth login --api-key
 
       - name: Scaneando os segredos do PR
         run: ggshield secret scan changes
