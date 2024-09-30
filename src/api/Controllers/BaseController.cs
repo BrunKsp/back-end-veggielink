@@ -5,6 +5,5 @@ namespace api.Controllers
     [ApiController]
     public class BaseController : ControllerBase
     {
-
     }
 }

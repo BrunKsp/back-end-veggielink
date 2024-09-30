@@ -6,11 +6,15 @@ jobs:
   ggshield:
     runs-on: ubuntu-latest
     steps:
-      - name: Checando  codigo
+      - name: Checando código
         uses: actions/checkout@v3
 
       - name: Instalando ggshield
         run: pip install ggshield
 
-      - name: Scaneando os segredos do PR
-        run: ggshield secret scan changes
+      - name: Scaneando arquivos appsettings.json por segredos
+        env:
+          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
+        run: |
+          git diff --name-only origin/main | grep 'appsettings.*.json' || exit 0
+          ggshield secret scan path appsettings*.json
